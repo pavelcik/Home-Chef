@@ -1,0 +1,49 @@
+<div class="container">
+  <form ngSubmit="onSubmit()" #ingredientForm="ngForm">
+    <div class="md-form input-group mb-4">
+      <input type="text" class="form-control" id="name"
+        placeholder="Start by typing the available ingredients, submitting each one with enter"
+        [(ngModel)]="ingredient.name" name="name" #name="ngModel"
+        (keyup.enter)="addIngredient(name.value); ingredientForm.reset()" required minlength="3">
+    </div>
+    <div *ngIf="name.invalid && (name.dirty || (name.pristine&&name.touched))" class="alert alert-warning">
+      <div *ngIf="name.errors.minlength"><small>Ingredient name must be have at least 3 chars.</small></div>
+      <div *ngIf="name.errors.required"><small>You must specify at least one ingredient.</small></div>
+    </div>
+  </form>
+
+  <div *ngIf="submitted" class="chosen-ingredients">
+    <h5>
+      In the fridge you have:
+    </h5>
+    <button *ngFor="let ingredient of ingredients" class="btn btn-md btn-dark">{{ingredient.name}} <i
+        class="fas fa-trash ml-3" (click)="deleteIngredient(ingredient)"></i></button>
+  </div>
+</div>
+<div class="find-recipes">
+  <button [disabled]="!submitted" type="button" class="btn btn-blue-grey btn-lg btn-block" (click)="getRecipes(ingredients)">Search
+    for recipes</button>
+    <p>{{recipes}}</p>
+</div>
+
+<div *ngFor="let recipe of recipes" class="card">
+
+  <!-- Card image -->
+  <div class="view overlay">
+    <img class="card-img-top" src="{{recipe.imageUrl}}" alt="Card image cap">
+    <a href="#!">
+      <div class="mask rgba-white-slight"></div>
+    </a>
+  </div>
+
+  <!-- Card content -->
+  <div class="card-body">
+    <!-- Title -->
+    <h4 class="card-title">{{recipe.title}}</h4>
+    <!-- Text -->
+    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+    <!-- Button -->
+    <a href="{{recipe.f2f_url}}" class="btn btn-primary">See recipe</a>
+
+  </div>
+</div>

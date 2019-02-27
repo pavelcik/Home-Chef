@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+
+.jumbotron-fluid {
+        position: relative;
+    
+}
+
+.site-name{
+    text-align: -webkit-center;
+    font-family: 'Signika', cursive;
+    text-transform: lowercase;
+    margin-top: 20px;
+    letter-spacing: 5px;
+    line-height: 80px;
+}
+body{
+  background-image: url(assets/170757-OVQW0N-79-min.jpg) !important;
+  height: 100%;
+  background-position: left;
+  background-repeat: space;
+  background-size: cover;
+}
+.text-bottom{
+    position: fixed;
+    bottom: 0;
+    opacity: 0.5;
+}
+
