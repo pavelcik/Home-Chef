@@ -19,31 +19,50 @@
     <button *ngFor="let ingredient of ingredients" class="btn btn-md btn-dark">{{ingredient.name}} <i
         class="fas fa-trash ml-3" (click)="deleteIngredient(ingredient)"></i></button>
   </div>
-</div>
-<div class="find-recipes">
-  <button [disabled]="!submitted" type="button" class="btn btn-blue-grey btn-lg btn-block" (click)="getRecipes(ingredients)">Search
-    for recipes</button>
-    <p>{{recipes}}</p>
-</div>
+  <div class="find-recipes">
+    <button [disabled]="!submitted" type="button" class="btn btn-blue-grey btn-lg btn-block"
+      (click)="getRecipes(ingredients)">
+      {{loading == false ? 'Search for recipes...' : 'Searching...'}}
+    </button>
 
-<div *ngFor="let recipe of recipes" class="card">
-
-  <!-- Card image -->
-  <div class="view overlay">
-    <img class="card-img-top" src="{{recipe.imageUrl}}" alt="Card image cap">
-    <a href="#!">
-      <div class="mask rgba-white-slight"></div>
-    </a>
-  </div>
-
-  <!-- Card content -->
-  <div class="card-body">
-    <!-- Title -->
-    <h4 class="card-title">{{recipe.title}}</h4>
-    <!-- Text -->
-    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-    <!-- Button -->
-    <a href="{{recipe.f2f_url}}" class="btn btn-primary">See recipe</a>
 
   </div>
-</div>
+
+  <div class="row"></div>
+
+  <!-- Card group -->
+  <div class="row card-group">
+    <div class="col-4" *ngFor="let recipe of recipes">
+      <!-- Card -->
+      <div class="card mb-4">
+        <!-- Card image -->
+
+        <div class="view overlay">
+          <a href="{{recipe.source_url}}">
+            <img class="card-img-top" src="{{recipe.image_url}}" alt="Card image cap">
+
+            <div class="mask rgba-white-slight"></div>
+          </a>
+
+        </div>
+
+        <!-- Card content -->
+        <div class="card-body">
+
+          <!-- Title -->
+          <h4 class="card-title">{{recipe.title}}</h4>
+          <!-- Text -->
+  
+      </div>
+      <!-- Card content -->
+  
+    </div>
+    <!-- Card -->
+  
+    
+    </div>
+    </div>
+    <!-- Card -->
+  </div>
+  
+  <!-- Card group -->
