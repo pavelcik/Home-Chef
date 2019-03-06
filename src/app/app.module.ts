@@ -5,7 +5,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { IngredientsComponent } from './ingredients/ingredients.component';
 import { IngredientFormComponent } from './ingredient-form/ingredient-form.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -17,7 +16,6 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    IngredientsComponent,
     IngredientFormComponent,
     RecipeComponent
   ],

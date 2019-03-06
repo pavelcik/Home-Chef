@@ -13,6 +13,7 @@ export class RecipeComponent implements OnInit {
 
   selectedRecipe: Recipe;
   recipes: Recipe[];
+  loading = false;
   
 
   constructor(
@@ -26,9 +27,17 @@ export class RecipeComponent implements OnInit {
     this.selectedRecipe=recipe;
   }
 
-  // getRecipes(): void{
-  //   this.recipeService.getRecipes();
-  // }
+  getRecipes(ingredients){
+    this.loading=true;
+    this.recipeService.getRecipes(ingredients)
+            .subscribe(data=>
+              {
+                this.loading=false;
+                let recipesList=data["recipes"];
+                this.recipes=recipesList;
+              });
+  }
+ 
 
 
   

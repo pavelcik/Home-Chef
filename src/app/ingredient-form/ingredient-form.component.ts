@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Ingredient } from '../ingredients/ingredient';
 import { NgForm } from '@angular/forms';
 import { RecipeSearchService } from '../recipe-search.service';
@@ -16,9 +16,12 @@ export class IngredientFormComponent {
   name = '';
   ingredient = new Ingredient(name);
   submitted = false;
-  loading = false;
+
   selectedRecipe: Recipe;
-  recipes: Recipe[];;
+  recipes: Recipe[];
+  @Input() inredients: Ingredient[];
+
+  
   
 
   constructor(
@@ -45,17 +48,6 @@ export class IngredientFormComponent {
     this.selectedRecipe=recipe;
   }
 
-  getRecipes(){
-    this.loading=true;
-    this.recipeService.getRecipes(this.ingredients)
-            .subscribe(data=>
-              {
-                this.loading=false;
-                let recipesList=data["recipes"];
-                this.recipes=recipesList;
-              });
-  }
- 
 
 
 }
